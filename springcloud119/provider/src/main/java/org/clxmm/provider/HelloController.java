@@ -3,6 +3,8 @@ package org.clxmm.provider;
 import org.clx.common.User;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 /**
  * @author clx
  * @date 2020-02-20 15:00
@@ -18,6 +20,7 @@ public class HelloController {
 
     @GetMapping("/hello2")
     public String hello2(String name) {
+        System.out.println(new Date() + ">>>" + name);
         return "hello " + name;
     }
 
