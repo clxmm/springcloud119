@@ -18,6 +18,7 @@ public class UserController {
     // id的格式  1,2,3
     @GetMapping("/user/{ids}")
     public List<User> getUserById(@PathVariable String ids) {
+        System.out.println(ids);
         String[] strings = ids.split(",");
         List<User> users = new ArrayList<>();
         for (String s : strings) {
