@@ -1,8 +1,11 @@
 package org.clxmm.provider;
 
+import org.clx.api.IUserService;
 import org.clx.common.User;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Date;
 
 /**
@@ -10,15 +13,17 @@ import java.util.Date;
  * @date 2020-02-20 15:00
  */
 @RestController
-public class HelloController {
+public class HelloController implements IUserService {
 
     @GetMapping("/hello")
+    @Override
     public String hello() {
         return "hello clxmm";
     }
 
 
     @GetMapping("/hello2")
+    @Override
     public String hello2(String name) {
         System.out.println(new Date() + ">>>" + name);
         return "hello " + name;
@@ -31,6 +36,7 @@ public class HelloController {
     }
 
     @PostMapping("/user2")
+    @Override
     public User addUser2(@RequestBody User user) {
         return user;
     }
@@ -53,8 +59,23 @@ public class HelloController {
     }
 
     @DeleteMapping("/user2/{id}")
-    public void deleteUser2(@PathVariable Integer id) {
+    @Override
+    public void deleteUser2(@PathVariable("id") Integer id) {
         System.out.println("id:" + id);
     }
 
+    @GetMapping("/user3")
+    @Override
+    public void getUserByName(@RequestHeader String name) throws UnsupportedEncodingException {
+        System.out.println(URLDecoder.decode(name, "utf-8"));
+    }
+
+
+
+
+
+
+
+
+    
 }
