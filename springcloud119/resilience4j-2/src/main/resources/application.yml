@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: resilience4j
+
+
+
+
+
+server:
+  port: 9003
+
+
+
+resilience4j:
+  retry:
+    retry-aspect-order: 399  # \u8868\u793ARetry\u7684\u4F18\u5148\u7EA7
+    backends:
+      retryA:
+        maxRetryAttempts: 5  #\u91CD\u8BD5\u7684\u6B21\u6570
+        waitDuration: 500 #\u91CD\u8BD5\u7684\u7B49\u5F85\u65F6\u95F4
+        exponentialBackoffMultiplier: 1.1 # \u95F4\u9694\u4E58\u6570
+        retryExceptions:
+          - java.lang.RuntimeException
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://localhost:10000/eureka

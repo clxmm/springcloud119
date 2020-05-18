@@ -18,7 +18,12 @@ public class HelloController implements IUserService {
     @GetMapping("/hello")
     @Override
     public String hello() {
-        return "hello clxmm";
+        String s = "hello clxmm";
+        System.out.println(s);
+        int i = 1 / 0;
+
+        return s;
+
     }
 
 
@@ -71,11 +76,4 @@ public class HelloController implements IUserService {
     }
 
 
-
-
-
-
-
-
-    
 }
