@@ -24,7 +24,7 @@ public class HelloService {
 
 
     public String error(Throwable throwable) {
-        System.out.println(s);
+
         return "error";
     }
 
