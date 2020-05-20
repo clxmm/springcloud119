@@ -7,3 +7,11 @@ eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:10000/eureka
+resilience4j:
+  ratelimiter:
+    limiters:
+      #       这里配置每秒钟处理一个请求
+      rlA:
+        limit-for-period: 1
+        limit-refresh-period: 1s  # 刷新周期
+        timeout-duration: 1s  # 冷却时间

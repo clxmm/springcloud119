@@ -1,5 +1,6 @@
 package org.clxmm.provider;
 
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import org.clx.api.IUserService;
 import org.clx.common.User;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +18,11 @@ public class HelloController implements IUserService {
 
     @GetMapping("/hello")
     @Override
+    @RateLimiter(name = "rlA")
     public String hello() {
         String s = "hello clxmm";
-        System.out.println(s);
-        int i = 1 / 0;
-
+        System.out.println(new Date());
+//        int i = 1 / 0;
         return s;
 
     }

@@ -19,7 +19,12 @@ public class HelloService {
     RestTemplate restTemplate;
 
     public String hello() {
-        return restTemplate.getForObject("http://127.0.0.1:9001/hello", String.class);
+
+        for (int i = 0; i < 5; i++) {
+         restTemplate.getForObject("http://127.0.0.1:9001/hello", String.class);
+        }
+
+        return "success";
     }
 
 
