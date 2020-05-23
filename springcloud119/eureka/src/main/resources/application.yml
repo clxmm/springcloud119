@@ -12,3 +12,5 @@ eureka:
     register-with-eureka: false
     # 表示是否从 Eureka Server 上获取注册信息
     fetch-registry: false
+    service-url:
+      defaultZone: http://127.0.0.1:10000/eureka
