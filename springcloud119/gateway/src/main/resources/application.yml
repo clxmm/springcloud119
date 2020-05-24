@@ -1,0 +1,32 @@
+server:
+  port: 9005
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: clxmm_route
+          uri: lb://provider              # lb  全局过滤器
+          filters:
+            - AddRequestParameter=name,clx
+          predicates:
+#            - Query=name,java.*
+#            - Query=name
+#            - Path=/categories/{segment}/
+            - Method=GET
+#            - After=2021-05-24T17:01:01+08:00[Asia/Shanghai]
+#            - Path=/get
+#      discovery:
+#        locator:
+#          enabled: true   # 开启自动代理
+  application:
+    name: gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10000/eureka
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+
